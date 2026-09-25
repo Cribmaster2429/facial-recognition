@@ -4,14 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-A real-time facial recognition system built with Python, leveraging deep learning for accurate face detection, encoding, and identification. Features both a REST API and CLI interface.
+A real time facial recognition service in Python. It detects faces, encodes them as 128 dimension embeddings and matches them, through a REST API or a CLI.
 
 ## Features
 
 - **Real-time Face Detection** - Detect faces using HOG (fast, CPU) or CNN (accurate, GPU) models
-- **Face Recognition** - 128-dimensional face embeddings using deep ResNet for accurate matching
-- **REST API** - Production-ready FastAPI with OpenAPI documentation
-- **CLI Tool** - Full-featured command-line interface for all operations
+- **Face Recognition** - 128 dimension face embeddings from dlib's ResNet model, matched by distance with a configurable tolerance
+- **REST API** - FastAPI with typed Pydantic schemas and OpenAPI docs at /docs
+- **CLI Tool** - Command line interface for every API operation
 - **Webcam Support** - Real-time recognition from webcam feed
 - **Persistent Storage** - SQLite database for face embeddings
 - **Docker Ready** - Containerized deployment with docker-compose
