@@ -1,9 +1,8 @@
 """In-memory storage backend for testing and development."""
 
-from datetime import datetime
 from typing import Optional
 
-from facial_recognition.core.models import Person
+from facial_recognition.core.models import Person, utc_now
 from facial_recognition.storage.base import BaseStorage
 
 
@@ -51,7 +50,7 @@ class MemoryStorage(BaseStorage):
         if person_id not in self._persons:
             return None
 
-        person.updated_at = datetime.utcnow()
+        person.updated_at = utc_now()
         self._persons[person_id] = person
         return person
 

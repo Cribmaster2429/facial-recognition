@@ -9,7 +9,7 @@ from uuid import UUID
 import aiosqlite
 
 from facial_recognition.config import get_settings
-from facial_recognition.core.models import FaceEncoding, Person
+from facial_recognition.core.models import FaceEncoding, Person, utc_now
 from facial_recognition.storage.base import BaseStorage
 
 
@@ -139,7 +139,7 @@ class SQLiteStorage(BaseStorage):
         if existing is None:
             return None
 
-        person.updated_at = datetime.utcnow()
+        person.updated_at = utc_now()
 
         await self._connection.execute(
             """

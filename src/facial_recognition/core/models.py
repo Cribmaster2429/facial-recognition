@@ -1,11 +1,16 @@
 """Data models for facial recognition system."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 from uuid import UUID, uuid4
 
 import numpy as np
 from pydantic import BaseModel, ConfigDict, Field
+
+
+def utc_now() -> datetime:
+    """Current time as a timezone aware UTC datetime."""
+    return datetime.now(timezone.utc)
 
 
 class BoundingBox(BaseModel):
@@ -90,8 +95,8 @@ class Person(BaseModel):
     name: str = Field(..., min_length=1, max_length=255)
     encoding: FaceEncoding
     metadata: dict[str, str] = Field(default_factory=dict)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
+    updated_at: datetime = Field(default_factory=utc_now)
 
 
 class MatchResult(BaseModel):
